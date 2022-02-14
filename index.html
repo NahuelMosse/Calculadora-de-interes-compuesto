@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <title>Calculadora de interes compuesto</title>
+        <link rel="icon" href="img/icono.png">
+        <meta name="author" content="Nahuel Mosse">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+        <script src="https://kit.fontawesome.com/aad6d8149f.js" crossorigin="anonymous"></script>
+        <script defer src="main.js"></script>
+    </head>
+
+    <body>
+
+        <!--Icono-->
+        <img src="img/icono.png" alt="Calculadora de interes compuesto">
+
+        <!--Container-->
+        <div id="main_border">
+            <main>
+
+                <!--Titulo-->
+                <h1><abbr title="Un interés compuesto, es el &#013;interés que se obtiene de un &#013;capital en el cual se re invierte &#013;el 100% de las ganancias."><i class="far fa-question-circle info info_principal"></i></abbr>Calculadora de interés compuesto</h1>
+
+                <!--Formulario-->
+                <form id="formulario">
+
+                    <!--Capital inicial-->
+                    <label for="capital_inicial">
+                        <span>Capital inicial ($)<abbr title="Monto al principio &#013;de la inversión."><i class="far fa-question-circle info"></i></abbr></span>
+                        <input id="capital_inicial" name="capital_inicial" type="number" min="0" value="100" required>
+                    </label>
+
+                    <!--Adición anual-->
+                    <label for="adicion_anual">
+                        <span>Adición anual ($)<abbr title="Monto añadido anualizado, &#013;o retirado si es negativo."><i class="far fa-question-circle info"></i></abbr></span>
+                        <input id="adicion_anual" name="adicion_anual" type="number" value="0" required>
+                    </label>
+
+                    <!--Periodos-->
+                    <label for="periodos">
+                        <span>Periodos<abbr title="Veces que se &#013;agrega dinero &#013;anualizado."><i class="far fa-question-circle info"></i></abbr></span>
+                        <input id="periodos" name="periodos" type="number" min="1" value="1" required>
+                    </label>
+
+                    <!--Años-->
+                    <label for="años">
+                        <span>Años<abbr title="Años de inversión."><i class="far fa-question-circle info"></i></abbr></span>
+                        <input id="años" name="años" type="number" min="0" value="4" required>
+                    </label>
+
+                    <!--Interés anual-->
+                    <label for="interes_anual">
+                        <span>Interés anual (%)<abbr title="Interés recibido &#013;anualmente."><i class="far fa-question-circle info"></i></abbr></span>
+                        <input id="interes_anual" name="interes_anual" type="number" min="0" value="10" required>
+                    </label>
+
+                    <!--submit-->
+                    <input id="submit" type="button" value="Calcular" onclick="comprobacion()">
+
+                </form>
+
+                <!--Resultados-->
+                <article>
+
+                    <!--Capital final-->
+                    <label>Capital final</label>
+                    <label id="capital_final"></label>
+                    <div>
+                        <canvas id="capital_final_graf"  height="50%" width="100%"></canvas>
+                    </div>
+
+                    <!--Capital ganado-->
+                    <label>Capital ganado</label>
+                    <label id="capital_ganado"></label>
+                    <div>
+                        <canvas id="capital_ganado_graf"  height="50%" width="100%"></canvas>
+                    </div>
+
+                </article>
+
+            </main>
+
+        </div>
+
+        <!--Errorbox-->
+        <div id="error_box" style="display: none;">
+            <i class="fas fa-times" id="cross" onclick="cerrarBox()"></i>
+            <h3>Error de calculo</h3>
+            <p id="error_text">Periodo menor a 1</p>
+        </div>
+        
+    </body>
+
+</html>
